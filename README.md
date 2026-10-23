@@ -1,3 +1,4 @@
+
 # SIM-Barang
 
 **Sistem Informasi Pengelolaan Inventaris Barang Jurusan**
@@ -65,3 +66,6 @@ Teknologi yang digunakan dalam pengembangan SIM-Barang:
 ---
 
 **Catatan:** Rencana pertemuan di atas merupakan contoh dan dapat disesuaikan dengan materi praktikum yang sebenarnya.
+=======
+# sim-barang-62530801592
+>>>>>>> 942ee483b91d76e0589f86c961a1fb81d390324f
