@@ -6,7 +6,8 @@
 ## Identitas
 - Nama   : Putri Alika Sari
 - Kelas  : 3IB
-- Matkul : 062530801592
+- NPM    : 062530801592
+- Matkul : Praktikum Web
 - Dosen  : Agus Setiawan, M.Kom
 Praktikum Pemrograman Web – D3 Manajemen Informatika, POLSRI.
 
