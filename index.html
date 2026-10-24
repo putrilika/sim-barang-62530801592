@@ -73,11 +73,12 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
         </section>
 
         <section id="form-barang">
             <h2>Formulir Input Barang</h2>
-            <form id="form-barang-input" action="#" method="post" novalidate>
+            <form id="form-barang-input" action="simpan.php" method="post" novalidate>
                 <p>
                     <label for="kode">Kode Barang</label><br>
                     <input type="text" id="kode" name="kode" placeholder="Contoh: BRG-006" required>
@@ -101,6 +102,9 @@
                     <input type="number" id="jumlah" name="jumlah" min="1" placeholder="Contoh: 10" required>
                     <small class="error" id="error-jumlah"></small>
                 </p>
+                <p>
+    <label for="harga">Harga Satuan (Rp)</label><br>
+    <input type="number" id="harga" name="harga" min="1" placeholder="Contoh: 150000" required>
                 <p>
                     <label for="kondisi">Kondisi</label><br>
                     <select id="kondisi" name="kondisi" required>

@@ -33,8 +33,7 @@ function tambahBaris(kode, nama, kategori, jumlah, kondisi) {
 }
 
 form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
+   
     let valid = true;
 
     const kode = inputKode.value.trim();
@@ -57,17 +56,8 @@ form.addEventListener('submit', function (e) {
         tampilkanToast('Lengkapi semua kolom terlebih dahulu!');
         valid = false;
     }
-
-    if (valid) {
-        tambahBaris(
-            kode,
-            inputNama.value.trim(),
-            selectKategori.value,
-            jumlah,
-            selectKondisi.value
-        );
-        tampilkanToast('Barang ' + kode + ' berhasil ditambahkan!');
-        form.reset();
+if (!valid) {
+        e.preventDefault();
     }
 });
 
