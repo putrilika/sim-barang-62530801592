@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,22 +16,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
         <h1>SIM-Barang</h1>
-        <p>Sistem Pengelolaan Inventaris Barang Jurusan</p>
+        <p>Sistem  Informasi Pengelolaan Inventaris Barang Jurusan</p>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#inventaris">Inventaris</a></li>
-            <li><a href="#form-barang">Tambah Barang</a></li>
+           <li><a href="index.php">Beranda</a></li>
+           <li><a href="#inventaris">Data Barang</a></li>
+           <li><a href="#form-barang">Tambah Barang</a></li>
+           <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>
 
     <main>
 
         <section id="inventaris">
-            <h2>Tabel Inventaris Barang</h2>
+            <h2>Inventaris Barang</h2>
              <input type="text" id="cari" placeholder="Cari barang...">
                <div class="tabel-wrapper">
             <table>

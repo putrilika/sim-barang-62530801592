@@ -1,11 +1,18 @@
 <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
+require 'Barang.php';
+
 function hitungTotal($jumlah, $harga)
 {
     return $jumlah * $harga;
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: index.html');
+    header('Location: index.php');
     exit;
 }
 
@@ -16,6 +23,7 @@ $kondisi  = htmlspecialchars($_POST['kondisi'] ?? '');
 $jumlah   = (int) ($_POST['jumlah'] ?? 0);
 $harga    = (float) ($_POST['harga'] ?? 0);
 $total    = hitungTotal($jumlah, $harga);
+$barang   = new Barang($kode, $nama, $jumlah);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -30,6 +38,7 @@ $total    = hitungTotal($jumlah, $harga);
         <h1>SIM-Barang</h1>
         <p>Ringkasan Data Barang</p>
     </header>
+    <p><?= $barang->tampilkanInfo() ?></p>
 
     <main>
         <section>
@@ -45,7 +54,7 @@ $total    = hitungTotal($jumlah, $harga);
                     <tr><th>Total Estimasi Nilai Aset</th><td>Rp <?= number_format($total, 0, ',', '.') ?></td></tr>
                 </table>
             </div>
-            <p><a href="index.html">&larr; Kembali ke halaman utama</a></p>
+            <p><a href="index.php">&larr; Kembali ke halaman utama</a></p>
         </section>
     </main>
 
