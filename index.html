@@ -23,6 +23,8 @@
 
         <section id="inventaris">
             <h2>Tabel Inventaris Barang</h2>
+             <input type="text" id="cari" placeholder="Cari barang...">
+               <div class="tabel-wrapper">
             <table>
                 <thead>
                     <tr>
@@ -33,7 +35,7 @@
                         <th>Kondisi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="isi-tabel">
                     <tr>
                         <td>BRG-001</td>
                         <td>HP Samsung</td>
@@ -75,10 +77,11 @@
 
         <section id="form-barang">
             <h2>Formulir Input Barang</h2>
-            <form action="#" method="post">
+            <form id="form-barang-input" action="#" method="post" novalidate>
                 <p>
                     <label for="kode">Kode Barang</label><br>
                     <input type="text" id="kode" name="kode" placeholder="Contoh: BRG-006" required>
+                    <small class="error" id="error-kode"></small>
                 </p>
                 <p>
                     <label for="nama">Nama Barang</label><br>
@@ -96,6 +99,7 @@
                 <p>
                     <label for="jumlah">Jumlah</label><br>
                     <input type="number" id="jumlah" name="jumlah" min="1" placeholder="Contoh: 10" required>
+                    <small class="error" id="error-jumlah"></small>
                 </p>
                 <p>
                     <label for="kondisi">Kondisi</label><br>
@@ -115,6 +119,7 @@
     <footer>
         <p>&copy; 2026 SIM-Barang | Putri Alika Sari | 062530801592 | 3IB</p>
     </footer>
-
+    <div id="toast" ></div>
+    <script src="main.js"></script>
 </body>
 </html>
