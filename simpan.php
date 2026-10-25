@@ -24,6 +24,17 @@ $jumlah   = (int) ($_POST['jumlah'] ?? 0);
 $harga    = (float) ($_POST['harga'] ?? 0);
 $total    = hitungTotal($jumlah, $harga);
 $barang   = new Barang($kode, $nama, $jumlah);
+require_once "koneksi.php";
+
+$cari = $pdo->prepare("SELECT id FROM kategori WHERE nama_kategori = ?");
+$cari->execute([$kategori]);
+$kategoriId = $cari->fetchColumn();
+
+$simpanDb = $pdo->prepare(
+    "INSERT INTO barang (kode, nama, jumlah, kondisi, harga, kategori_id)
+     VALUES (?, ?, ?, ?, ?, ?)"
+);
+$simpanDb->execute([$kode, $nama, $jumlah, $kondisi, $harga, $kategoriId]);
 ?>
 <!DOCTYPE html>
 <html lang="id">

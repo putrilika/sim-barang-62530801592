@@ -5,6 +5,12 @@ if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit;
 }
+require 'koneksi.php';
+
+$stmt = $pdo->query("SELECT b.kode, b.nama, k.nama_kategori, b.jumlah, b.kondisi
+                     FROM barang b JOIN kategori k ON b.kategori_id = k.id
+                     ORDER BY b.id");
+$daftar = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -48,42 +54,17 @@ if (!isset($_SESSION['username'])) {
                     </tr>
                 </thead>
                 <tbody id="isi-tabel">
-                    <tr>
-                        <td>BRG-001</td>
-                        <td>HP Samsung</td>
-                        <td>Elektronik</td>
-                        <td>20</td>
-                        <td>Baik</td>
-                    </tr>
-                    <tr>
-                        <td>BRG-002</td>
-                        <td>Proyektor BenQ</td>
-                        <td>Elektronik</td>
-                        <td>5</td>
-                        <td>Baik</td>
-                    </tr>
-                    <tr>
-                        <td>BRG-003</td>
-                        <td>Kursi Kerja</td>
-                        <td>Furnitur</td>
-                        <td>40</td>
-                        <td>Rusak Ringan</td>
-                    </tr>
-                    <tr>
-                        <td>BRG-004</td>
-                        <td>Meja Praktikum</td>
-                        <td>Furnitur</td>
-                        <td>20</td>
-                        <td>Baik</td>
-                    </tr>
-                    <tr>
-                        <td>BRG-005</td>
-                        <td>Spidol Whiteboard</td>
-                        <td>Alat Tulis</td>
-                        <td>30</td>
-                        <td>Baik</td>
-                    </tr>
-                </tbody>
+                   <tbody id="isi-tabel">
+<?php foreach ($daftar as $row): ?>
+    <tr>
+        <td><?= htmlspecialchars($row['kode']) ?></td>
+        <td><?= htmlspecialchars($row['nama']) ?></td>
+        <td><?= htmlspecialchars($row['nama_kategori']) ?></td>
+        <td><?= htmlspecialchars($row['jumlah']) ?></td>
+        <td><?= htmlspecialchars($row['kondisi']) ?></td>
+    </tr>
+<?php endforeach; ?>
+</tbody>
             </table>
             </div>
         </section>
